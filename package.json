@@ -25,6 +25,7 @@
     "semi": false
   },
   "dependencies": {
+    "mongodb": "^4.1.0",
     "next": "^11.0.0",
     "next-auth": "latest",
     "react": "^17.0.2",
