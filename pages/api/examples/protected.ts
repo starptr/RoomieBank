@@ -11,7 +11,6 @@ export default async function protectedHandler(
 
     if (session) {
         const { query } = req;
-        console.log(query);
         const findQuery: { [key: string]: any } = {};
         if (query.is_pending) {
             findQuery.is_reimbursed = { $exists: false };
@@ -31,8 +30,6 @@ export default async function protectedHandler(
             .sort({ date: -1 });
         if (limit !== undefined) receipts = receipts.limit(limit);
         receipts = await receipts.toArray();
-
-        console.log(receipts);
 
         return res.json(receipts);
     };

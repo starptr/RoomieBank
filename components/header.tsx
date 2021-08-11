@@ -73,6 +73,11 @@ export default function Header() {
               <a>Upload</a>
             </Link>
           </li>
+          <li className={styles.navItem}>
+            <Link href="/process">
+              <a>Process</a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

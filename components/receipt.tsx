@@ -18,6 +18,6 @@ export default function Receipt(props: ReceiptProps) {
         <p>
             {`${date.getDate()} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}, ${name}${cost !== undefined ? `, ${cost}¢` : ''}`}
         </p>
-        {showImg && <div style={{ position: "relative", width: "100%", height: "10rem" }}><Image src={img} layout="fill" objectFit="scale-down" /></div>}
+        {showImg && img && <div style={{ position: "relative", width: "100%", height: "10rem" }}><Image src={img} layout="fill" objectFit="scale-down" /></div>}
     </li>;
 };
