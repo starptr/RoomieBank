@@ -15,9 +15,8 @@ export default function Header() {
       </noscript>
       <div className={styles.signedInStatus}>
         <p
-          className={`nojs-show ${
-            !session && loading ? styles.loading : styles.loaded
-          }`}
+          className={`nojs-show ${!session && loading ? styles.loading : styles.loaded
+            }`}
         >
           {!session && (
             <>
@@ -70,7 +69,7 @@ export default function Header() {
           </li>
           <li className={styles.navItem}>
             <Link href="/protected">
-              <a>Upload</a>
+              <a>Submit</a>
             </Link>
           </li>
           <li className={styles.navItem}>

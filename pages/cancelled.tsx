@@ -1,3 +1,3 @@
 import { Page } from './pending';
 
-export default Page({ is_cancelled: "1" });
+export default Page({ is_cancelled: "1" }, { title: "Cancelled" });

@@ -4,14 +4,14 @@ import Layout from '../components/layout';
 import AccessDenied from '../components/access-denied';
 import { Page as PageContentTemplate } from './pending';
 
-const PageContent = PageContentTemplate({ is_pending: "1" }, { showProcesserUi: true });
+const PageContent = PageContentTemplate({ is_pending: "1" }, { showProcesserUi: true, title: "Processer" });
 
-export default function Page () {
-    const [ session, loading ] = useSession()
-    const [ isAuthorized , setIsAuthorized ] = useState()
+export default function Page() {
+    const [session, loading] = useSession()
+    const [isAuthorized, setIsAuthorized] = useState()
 
     // Fetch content from protected route
-    useEffect(()=>{
+    useEffect(() => {
         const fetchData = async () => {
             const res = await fetch('/api/authorization');
             const json = await res.json();
@@ -24,7 +24,7 @@ export default function Page () {
     if (typeof window !== 'undefined' && loading) return null
 
     // If no session exists, display access denied message
-    if (!session) { return    <Layout><AccessDenied/></Layout> }
+    if (!session) { return <Layout><AccessDenied /></Layout> }
 
     if (isAuthorized) {
         return <PageContent />
