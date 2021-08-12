@@ -5,7 +5,11 @@ import AccessDenied from '../components/access-denied'
 import ReceiptList from '../components/receiptList';
 import { reqDataAndSet } from '../lib/utils';
 
-export const Page = (reqParamObj: any) => () => {
+export interface PageOptions {
+  showProcesserUi?: boolean;
+};
+
+export const Page = (reqParamObj: any, opt: PageOptions = {}) => () => {
   const [ session, loading ] = useSession()
   const [ content , setContent ] = useState()
 
@@ -22,7 +26,7 @@ export const Page = (reqParamObj: any) => () => {
 
     return <Layout>
         <h1>Pending</h1>
-        <ReceiptList data={content} showImg />
+        <ReceiptList data={content} showImg showProcess={opt.showProcesserUi} />
     </Layout>;
 };
 

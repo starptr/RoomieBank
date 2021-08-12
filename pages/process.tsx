@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/client';
 import Layout from '../components/layout';
 import AccessDenied from '../components/access-denied';
+import { Page as PageContentTemplate } from './pending';
+
+const PageContent = PageContentTemplate({ is_pending: "1" }, { showProcesserUi: true });
 
 export default function Page () {
     const [ session, loading ] = useSession()
@@ -23,13 +26,15 @@ export default function Page () {
     // If no session exists, display access denied message
     if (!session) { return    <Layout><AccessDenied/></Layout> }
 
+    if (isAuthorized) {
+        return <PageContent />
+    }
+
     // If session exists, display content
     return (
         <Layout>
             <h1>Process Pending Receipts</h1>
-            {isAuthorized
-                ? <p>process these</p>
-                : <p>Email not recognized. Make sure you logged in with the right account!</p>}
+            <p>Email not recognized. Make sure you logged in with the right account!</p>
         </Layout>
-    )
+    );
 }

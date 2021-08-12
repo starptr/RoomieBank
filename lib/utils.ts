@@ -2,11 +2,8 @@ import { ReceiptData } from "../components/receipt";
 export function parseMongoData(arr: any[]): ReceiptData[] {
     return arr.map(data => {
         return ({
-            _id: data._id,
-            name: data.name,
+            ...data,
             date: new Date(data.date),
-            img: data.img,
-            cost: data.cost,
         });
     });
 };
